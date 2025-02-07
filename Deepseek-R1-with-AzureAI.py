@@ -13,12 +13,12 @@ from azure.ai.inference.models import UserMessage
 # - For math problems, consider adding: "Please reason step by step, and put your final answer within \boxed{}."
 # - Generate multiple completions (64) to estimate pass@1 by averaging results.
 
-# Set your API key (using a default value here)
+# Set your API key you'll find from the https://ai.azure.com/ portal
 api_key = os.getenv("AZURE_INFERENCE_CREDENTIAL", 'Your API Key goes here')
 if not api_key:
     raise Exception("A key should be provided to invoke the endpoint")
 
-# Use the Azure AI Deepseek endpoint
+# Use the endpoint from your Deepseek model deployment
 client = ChatCompletionsClient(
     endpoint='Your Endpoint goes here without the /v1/chat/completions', #Example: https://*.eastus2.models.ai.azure.com
     credential=AzureKeyCredential(api_key)
@@ -51,7 +51,7 @@ user_prompt = (
     "- Format: Clear and readable\n"
     "- Tone: Friendly yet professional\n"
     "- Language: Simple and accessible\n\n"
-    # Below is the actual question to ask the AI
+    # Below is the actual prompt to ask the AI model. Multiline quote so you can expand the prompt without any worries.
     """Question: 
     Why are we still here? Just to suffer?
     """
